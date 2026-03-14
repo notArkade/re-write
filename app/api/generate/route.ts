@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
-import { claude } from '@/lib/claude';
+import { gemini } from '@/lib/gemini';
 import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
@@ -40,16 +40,16 @@ ${requestedFormats}
 
 You MUST return the output as a valid JSON object. Do NOT wrap it in Markdown code blocks (like \`\`\`json). Just the raw JSON object. Use the exact keys: ${platforms.map(p => `"${p}"`).join(', ')}. The values should be the generated text strings.`;
 
-    const message = await claude.messages.create({
-      model: 'claude-3-haiku-20240307',
-      max_tokens: 4000,
-      system: "You are a senior social media manager and AI copywriter. Output strictly valid JSON without any markdown formatting.",
-      messages: [
-        { role: 'user', content: prompt }
-      ],
+    const response = await gemini.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        systemInstruction: "You are a senior social media manager and AI copywriter. Output strictly valid JSON without any markdown formatting.",
+        responseMimeType: "application/json",
+      }
     });
 
-    const responseText = message.content.find(c => c.type === 'text')?.text || '{}';
+    const responseText = response.text || '{}';
     
     // Clean up potential markdown formatting just in case Claude didn't listen
     const cleanJsonString = responseText.replace(/```json\n?|\n?```/g, '').trim();

@@ -57,7 +57,12 @@ export function ContentGenerator() {
       });
 
       if (!res.ok) {
-        throw new Error('Failed to generate content');
+        let errorMsg = 'Failed to generate content';
+        try {
+          const errData = await res.json();
+          errorMsg = errData.error || errData.details || errorMsg;
+        } catch (e) {}
+        throw new Error(errorMsg);
       }
 
       const data = await res.json();

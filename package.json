@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.78.0",
     "@clerk/nextjs": "^7.0.4",
+    "@google/genai": "^1.45.0",
     "@supabase/supabase-js": "^2.99.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.36.0",
