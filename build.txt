@@ -1,0 +1,32 @@
+  ▲ Next.js 14.2.15
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./app/api/generate/route.ts
+Module not found: Can't resolve '@/lib/claude'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/api/generate/route.ts
+Module not found: Can't resolve '@/lib/supabase'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/dashboard/history/page.tsx
+Module not found: Can't resolve '@/lib/supabase'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/dashboard/history/page.tsx
+Module not found: Can't resolve '@/components/HistoryCard'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/dashboard/layout.tsx
+Module not found: Can't resolve '@/components/Navbar'
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+> Build failed because of webpack errors
