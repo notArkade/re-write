@@ -48,13 +48,8 @@ export default async function LandingPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
         <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-indigo-300 mb-8 backdrop-blur-sm">
-          <Zap className="w-4 h-4" />
-          <span>Transform a single post into a full campaign</span>
-        </div>
-
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-4xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6 drop-shadow-sm">
-          AI Driven Content Repurposing
+          AI Driven Content
         </h1>
         <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-10">
           Turn your blog posts, articles, and scripts into highly engaging

@@ -20,9 +20,11 @@ export function Navbar() {
         <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center">
           <Sparkles className="w-5 h-5 text-white" />
         </div>
-        <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
-          Re:Write
-        </span>
+        <Link href="/">
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+            Re: Write
+          </span>
+        </Link>
       </div>
 
       <div className="flex-1 space-y-2">
