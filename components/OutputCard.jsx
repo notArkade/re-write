@@ -1,16 +1,14 @@
-'use client';
+"use client";
 
-import { CopyButton } from './CopyButton';
-import { RefreshCw } from 'lucide-react';
+import { CopyButton } from "./CopyButton";
+import { RefreshCw } from "lucide-react";
 
-interface OutputCardProps {
-  platform: string;
-  content: string;
-  onRegenerate?: () => void;
-  isRegenerating?: boolean;
-}
-
-export function OutputCard({ platform, content, onRegenerate, isRegenerating }: OutputCardProps) {
+export function OutputCard({
+  platform,
+  content,
+  onRegenerate,
+  isRegenerating,
+}) {
   if (!content) return null;
 
   return (
@@ -29,7 +27,9 @@ export function OutputCard({ platform, content, onRegenerate, isRegenerating }: 
               className="p-2 rounded-md bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               title="Regenerate this specific post"
             >
-              <RefreshCw className={`w-4 h-4 ${isRegenerating ? 'animate-spin' : ''}`} />
+              <RefreshCw
+                className={`w-4 h-4 ${isRegenerating ? "animate-spin" : ""}`}
+              />
             </button>
           )}
           <CopyButton text={content} />

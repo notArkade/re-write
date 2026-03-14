@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { auth } from '@clerk/nextjs/server';
-import { ArrowRight, Sparkles, Zap, Globe, Github } from 'lucide-react';
+import Link from "next/link";
+import { auth } from "@clerk/nextjs/server";
+import { ArrowRight, Sparkles, Zap } from "lucide-react";
 
 export default async function LandingPage() {
   const { userId } = await auth();
@@ -13,7 +13,7 @@ export default async function LandingPage() {
             <Sparkles className="w-5 h-5 text-white" />
           </div>
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
-            Repurpose.ai
+            Re: Write
           </span>
         </div>
         <div className="flex items-center gap-4">
@@ -57,7 +57,9 @@ export default async function LandingPage() {
           AI Driven Content Repurposing
         </h1>
         <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-10">
-          Turn your blog posts, articles, and scripts into highly engaging Twitter threads, LinkedIn posts, Instagram captions, and YouTube Shorts in seconds.
+          Turn your blog posts, articles, and scripts into highly engaging
+          Twitter threads, LinkedIn posts, Instagram captions, and YouTube
+          Shorts in seconds.
         </p>
 
         <Link
@@ -68,9 +70,9 @@ export default async function LandingPage() {
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Link>
       </main>
-      
+
       <footer className="py-8 text-center text-sm text-neutral-500 border-t border-white/10">
-        <p>© {new Date().getFullYear()} Repurpose.ai — Built for creators.</p>
+        <p>© {new Date().getFullYear()} Re: Write — Built for creators.</p>
       </footer>
     </div>
   );

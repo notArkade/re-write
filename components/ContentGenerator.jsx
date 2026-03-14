@@ -1,38 +1,30 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Sparkles, CheckSquare, Square, Loader2 } from 'lucide-react';
-import { OutputCard } from './OutputCard';
-import { cn } from '@/lib/utils';
-
-interface GeneratedResults {
-  twitter?: string;
-  linkedin?: string;
-  instagram?: string;
-  youtube?: string;
-}
+import { useState } from "react";
+import { Sparkles, CheckSquare, Square, Loader2 } from "lucide-react";
+import { OutputCard } from "./OutputCard";
+import { cn } from "@/lib/utils";
 
 export function ContentGenerator() {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [platforms, setPlatforms] = useState({
     twitter: true,
     linkedin: true,
     instagram: true,
     youtube: true,
   });
-  
   const [loading, setLoading] = useState(false);
-  const [regeneratingPlatform, setRegeneratingPlatform] = useState<string | null>(null);
-  const [results, setResults] = useState<GeneratedResults | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [regeneratingPlatform, setRegeneratingPlatform] = useState(null);
+  const [results, setResults] = useState(null);
+  const [error, setError] = useState(null);
 
-  const togglePlatform = (key: keyof typeof platforms) => {
-    setPlatforms(prev => ({ ...prev, [key]: !prev[key] }));
+  const togglePlatform = (key) => {
+    setPlatforms((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handleGenerate = async () => {
     if (!content.trim()) {
-      setError('Please enter some content to repurpose.');
+      setError("Please enter some content to repurpose.");
       return;
     }
 
@@ -41,7 +33,7 @@ export function ContentGenerator() {
       .map(([key]) => key);
 
     if (selectedPlatforms.length === 0) {
-      setError('Please select at least one platform.');
+      setError("Please select at least one platform.");
       return;
     }
 
@@ -50,14 +42,14 @@ export function ContentGenerator() {
     setResults(null);
 
     try {
-      const res = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content, platforms: selectedPlatforms }),
       });
 
       if (!res.ok) {
-        let errorMsg = 'Failed to generate content';
+        let errorMsg = "Failed to generate content";
         try {
           const errData = await res.json();
           errorMsg = errData.error || errData.details || errorMsg;
@@ -67,21 +59,21 @@ export function ContentGenerator() {
 
       const data = await res.json();
       setResults(data);
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong. Please try again.');
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleRegeneratePlatform = async (platform: string) => {
+  const handleRegeneratePlatform = async (platform) => {
     setRegeneratingPlatform(platform);
     setError(null);
 
     try {
-      const res = await fetch('/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content, platforms: [platform] }),
       });
 
@@ -90,26 +82,44 @@ export function ContentGenerator() {
       }
 
       const data = await res.json();
-      setResults(prev => prev ? { ...prev, [platform]: data[platform] } : data);
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong. Please try again.');
+      setResults((prev) =>
+        prev ? { ...prev, [platform]: data[platform] } : data,
+      );
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setRegeneratingPlatform(null);
     }
   };
 
   const platformOptions = [
-    { id: 'twitter', label: 'Twitter/X Thread', color: 'hover:text-sky-400 hover:border-sky-400/50' },
-    { id: 'linkedin', label: 'LinkedIn Post', color: 'hover:text-blue-500 hover:border-blue-500/50' },
-    { id: 'instagram', label: 'Instagram Caption', color: 'hover:text-pink-500 hover:border-pink-500/50' },
-    { id: 'youtube', label: 'YouTube Short Script', color: 'hover:text-red-500 hover:border-red-500/50' },
-  ] as const;
+    {
+      id: "twitter",
+      label: "Twitter/X Thread",
+      color: "hover:text-sky-400 hover:border-sky-400/50",
+    },
+    {
+      id: "linkedin",
+      label: "LinkedIn Post",
+      color: "hover:text-blue-500 hover:border-blue-500/50",
+    },
+    {
+      id: "instagram",
+      label: "Instagram Caption",
+      color: "hover:text-pink-500 hover:border-pink-500/50",
+    },
+    {
+      id: "youtube",
+      label: "YouTube Short Script",
+      color: "hover:text-red-500 hover:border-red-500/50",
+    },
+  ];
 
   return (
     <div className="w-full flex flex-col gap-8">
       <div className="bg-neutral-900 border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
         <div className="absolute inset-x-0 -top-px h-px w-1/2 mx-auto bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-        
+
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-indigo-400" />
           Repurpose Content
@@ -140,16 +150,16 @@ export function ContentGenerator() {
             </label>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 border border-white/5 p-2 rounded-xl bg-neutral-950/30">
               {platformOptions.map((option) => {
-                const isSelected = platforms[option.id as keyof typeof platforms];
+                const isSelected = platforms[option.id];
                 return (
                   <button
                     key={option.id}
-                    onClick={() => togglePlatform(option.id as keyof typeof platforms)}
+                    onClick={() => togglePlatform(option.id)}
                     className={cn(
                       "flex items-center gap-3 p-3 rounded-lg border transition-all text-sm font-medium text-left",
-                      isSelected 
-                        ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-300" 
-                        : "bg-white/5 border-transparent text-neutral-400 hover:bg-white/10"
+                      isSelected
+                        ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-300"
+                        : "bg-white/5 border-transparent text-neutral-400 hover:bg-white/10",
                     )}
                   >
                     {isSelected ? (
@@ -194,7 +204,7 @@ export function ContentGenerator() {
               <div key={platform} className="h-96">
                 <OutputCard
                   platform={platform}
-                  content={output as string}
+                  content={output}
                   onRegenerate={() => handleRegeneratePlatform(platform)}
                   isRegenerating={regeneratingPlatform === platform}
                 />

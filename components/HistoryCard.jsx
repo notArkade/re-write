@@ -1,40 +1,26 @@
-'use client';
+"use client";
 
-import { CopyButton } from './CopyButton';
-import { Clock } from 'lucide-react';
+import { CopyButton } from "./CopyButton";
+import { Clock } from "lucide-react";
 
-interface HistoryRecord {
-  id: string;
-  input_content: string;
-  twitter_output: string | null;
-  linkedin_output: string | null;
-  instagram_output: string | null;
-  youtube_output: string | null;
-  created_at: string;
-}
-
-interface HistoryCardProps {
-  record: HistoryRecord;
-}
-
-export function HistoryCard({ record }: HistoryCardProps) {
+export function HistoryCard({ record }) {
   const date = new Date(record.created_at).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 
-  const getTruncatedInput = (text: string) => {
-    return text.length > 100 ? text.substring(0, 100) + '...' : text;
+  const getTruncatedInput = (text) => {
+    return text.length > 100 ? text.substring(0, 100) + "..." : text;
   };
 
   const platforms = [
-    { name: 'Twitter', content: record.twitter_output },
-    { name: 'LinkedIn', content: record.linkedin_output },
-    { name: 'Instagram', content: record.instagram_output },
-    { name: 'YouTube', content: record.youtube_output },
+    { name: "Twitter", content: record.twitter_output },
+    { name: "LinkedIn", content: record.linkedin_output },
+    { name: "Instagram", content: record.instagram_output },
+    { name: "YouTube", content: record.youtube_output },
   ].filter((p) => p.content);
 
   return (
@@ -45,7 +31,7 @@ export function HistoryCard({ record }: HistoryCardProps) {
           {date}
         </div>
       </div>
-      
+
       <div className="p-4 border-b border-white/5 bg-neutral-950/50">
         <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-2 block">
           Original Input
@@ -62,7 +48,10 @@ export function HistoryCard({ record }: HistoryCardProps) {
               <span className="text-sm font-semibold text-indigo-400">
                 {platform.name}
               </span>
-              <CopyButton text={platform.content!} className="bg-transparent border-none hover:bg-white/5" />
+              <CopyButton
+                text={platform.content}
+                className="bg-transparent border-none hover:bg-white/5"
+              />
             </div>
             <p className="text-sm text-neutral-300 font-mono whitespace-pre-wrap pl-2 border-l-2 border-indigo-500/20">
               {platform.content}

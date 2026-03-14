@@ -1,4 +1,4 @@
-import { ContentGenerator } from '@/components/ContentGenerator';
+import { ContentGenerator } from "@/components/ContentGenerator";
 
 export default function DashboardPage() {
   return (
@@ -8,7 +8,8 @@ export default function DashboardPage() {
           Creation Studio
         </h1>
         <p className="text-neutral-500 text-sm max-w-xl">
-          Paste your content below to automatically generate engaging social media posts tailored to your selected platforms.
+          Paste your content below to automatically generate engaging social
+          media posts tailored to your selected platforms.
         </p>
       </div>
 

@@ -1,7 +1,7 @@
-import { auth } from '@clerk/nextjs/server';
-import { supabase } from '@/lib/supabase';
-import { HistoryCard } from '@/components/HistoryCard';
-import { History as HistoryIcon } from 'lucide-react';
+import { auth } from "@clerk/nextjs/server";
+import { supabase } from "@/lib/supabase";
+import { HistoryCard } from "@/components/HistoryCard";
+import { History as HistoryIcon } from "lucide-react";
 
 export const revalidate = 0; // Dynamic route
 
@@ -14,13 +14,13 @@ export default async function HistoryPage() {
 
   // Fetch history
   const { data: history, error } = await supabase
-    .from('content_history')
-    .select('*')
-    .eq('user_id', userId)
-    .order('created_at', { ascending: false });
+    .from("content_history")
+    .select("*")
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false });
 
   if (error) {
-    console.error('Failed to fetch history:', error);
+    console.error("Failed to fetch history:", error);
   }
 
   return (
