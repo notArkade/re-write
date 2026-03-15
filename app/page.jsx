@@ -9,10 +9,10 @@ export default async function LandingPage() {
     <div className="flex flex-col min-h-screen">
       <header className="px-6 lg:px-14 py-6 flex items-center justify-between border-b border-white/5 backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center">
+          {/* <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center">
             <Sparkles className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+          </div> */}
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 space-mono">
             Re: Write
           </span>
         </div>
@@ -48,10 +48,19 @@ export default async function LandingPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
         <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-4xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6 drop-shadow-sm">
-          AI Driven Content
-        </h1>
-        <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-10">
+        {/* <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-4xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6 drop-shadow-sm"> */}
+        <div className="mb-6 max-w-7xl">
+          <pre className="text-[10px] md:text-[40px] leading-none font-mono bg-clip-text text-transparent select-none bg-gradient-to-r from-purple-400 to-indigo-400 whitespace-pre">
+            {`██████╗ ███████╗       ██╗    ██╗██████╗ ██╗████████╗███████╗
+██╔══██╗██╔════╝██╗    ██║    ██║██╔══██╗██║╚══██╔══╝██╔════╝
+██████╔╝█████╗  ╚═╝    ██║ █╗ ██║██████╔╝██║   ██║   █████╗
+██╔══██╗██╔══╝  ██╗    ██║███╗██║██╔══██╗██║   ██║   ██╔══╝
+██║  ██║███████╗╚═╝    ╚███╔███╔╝██║  ██║██║   ██║   ███████╗
+╚═╝  ╚═╝╚══════╝        ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝`}
+          </pre>
+        </div>
+        {/* </h1> */}
+        <p className="text-lg md:text-xl text-neutral-400 max-w-6xl mb-10 syne">
           Turn your blog posts, articles, and scripts into highly engaging
           Twitter threads, LinkedIn posts, Instagram captions, and YouTube
           Shorts in seconds.
@@ -59,7 +68,7 @@ export default async function LandingPage() {
 
         <Link
           href="/dashboard"
-          className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white transition-all duration-300 bg-indigo-600 border border-indigo-500 rounded-full hover:bg-indigo-700 hover:scale-105 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
+          className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base space-mono uppercase tracking-[0.1em] font-semibold text-white transition-all duration-300 bg-indigo-600 border border-indigo-500 rounded-lg hover:bg-indigo-700 hover:scale-105 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
         >
           Start Repurposing
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -17,11 +17,11 @@ export function Navbar() {
   return (
     <nav className="w-64 border-r border-white/10 bg-neutral-900/50 p-4 shrink-0 flex flex-col hidden md:flex min-h-screen">
       <div className="flex items-center gap-2 mb-10 px-2 py-2">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center">
+        {/* <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center">
           <Sparkles className="w-5 h-5 text-white" />
-        </div>
+        </div> */}
         <Link href="/">
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 space-mono">
             Re: Write
           </span>
         </Link>
