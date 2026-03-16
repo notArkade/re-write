@@ -1,9 +1,12 @@
 "use client";
 
 import { CopyButton } from "./CopyButton";
-import { Clock } from "lucide-react";
+import { Clock, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 export function HistoryCard({ record }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const date = new Date(record.created_at).toLocaleDateString(undefined, {
     year: "numeric",
     month: "short",
@@ -30,6 +33,24 @@ export function HistoryCard({ record }) {
           <Clock className="w-4 h-4" />
           {date}
         </div>
+        {platforms.length > 0 && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors"
+          >
+            {isExpanded ? (
+              <>
+                <ChevronUp className="w-4 h-4" />
+                Hide Outputs
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-4 h-4" />
+                Show Outputs
+              </>
+            )}
+          </button>
+        )}
       </div>
 
       <div className="p-4 border-b border-white/5 bg-neutral-950/50">
@@ -41,24 +62,26 @@ export function HistoryCard({ record }) {
         </p>
       </div>
 
-      <div className="p-4 flex flex-col gap-4">
-        {platforms.map((platform) => (
-          <div key={platform.name} className="flex flex-col gap-2">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-indigo-400">
-                {platform.name}
-              </span>
-              <CopyButton
-                text={platform.content}
-                className="bg-transparent border-none hover:bg-white/5"
-              />
+      {isExpanded && (
+        <div className="p-4 flex flex-col gap-4">
+          {platforms.map((platform) => (
+            <div key={platform.name} className="flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-indigo-400">
+                  {platform.name}
+                </span>
+                <CopyButton
+                  text={platform.content}
+                  className="bg-transparent border-none hover:bg-white/5"
+                />
+              </div>
+              <p className="text-sm text-neutral-300 font-mono whitespace-pre-wrap pl-2 border-l-2 border-indigo-500/20">
+                {platform.content}
+              </p>
             </div>
-            <p className="text-sm text-neutral-300 font-mono whitespace-pre-wrap pl-2 border-l-2 border-indigo-500/20">
-              {platform.content}
-            </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

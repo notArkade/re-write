@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
+import HoverText from "../components/HoverText";
+import NeonText from "@/components/NeonText";
 
 export default async function LandingPage() {
   const { userId } = await auth();
@@ -50,6 +52,9 @@ export default async function LandingPage() {
 
         {/* <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-4xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6 drop-shadow-sm"> */}
         <div className="mb-6 max-w-7xl">
+          <div className="w-full flex justify-center md:justify-start">
+            {/* <NeonText text="Re:Write" /> */}
+          </div>
           <pre className="text-[10px] md:text-[40px] leading-none font-mono bg-clip-text text-transparent select-none bg-gradient-to-r from-purple-400 to-indigo-400 whitespace-pre">
             {`██████╗ ███████╗       ██╗    ██╗██████╗ ██╗████████╗███████╗
 ██╔══██╗██╔════╝██╗    ██║    ██║██╔══██╗██║╚══██╔══╝██╔════╝
@@ -70,13 +75,17 @@ export default async function LandingPage() {
           href="/dashboard"
           className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base space-mono uppercase tracking-[0.1em] font-semibold text-white transition-all duration-300 bg-indigo-600 border border-indigo-500 rounded-lg hover:bg-indigo-700 hover:scale-105 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
         >
-          Start Repurposing
+          Start
+          <span>
+            <HoverText>Repurposing</HoverText>
+          </span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </Link>
       </main>
 
       <footer className="py-8 text-center text-sm text-neutral-500 border-t border-white/10">
-        <p>© {new Date().getFullYear()} Re: Write — Built for creators.</p>
+        <p>© {new Date().getFullYear()} — Re: Write</p>
+        <p>Built for creators. By creators.</p>
       </footer>
     </div>
   );
