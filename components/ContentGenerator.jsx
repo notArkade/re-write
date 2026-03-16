@@ -121,7 +121,6 @@ export function ContentGenerator() {
         <div className="absolute inset-x-0 -top-px h-px w-1/2 mx-auto bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
 
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-indigo-400" />
           Repurpose Content
         </h2>
 
@@ -188,7 +187,6 @@ export function ContentGenerator() {
               ) : (
                 <>
                   Generate Content
-                  <Sparkles className="w-4 h-4" />
                 </>
               )}
             </button>
