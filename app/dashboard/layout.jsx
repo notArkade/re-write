@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }) {
         <UserButton afterSignOutUrl="/" />
       </div>
 
-      <main className="flex w-full mx-auto p-4 pt-20 md:p-10 md:pt-10 overflow-y-auto grid-bg">
+      <main className="flex-1 max-w-full mx-auto p-4 pt-20 md:p-10 md:pt-10 overflow-y-auto grid-bg">
         {children}
       </main>
     </div>
