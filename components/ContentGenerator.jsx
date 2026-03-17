@@ -177,7 +177,7 @@ export function ContentGenerator() {
             <button
               onClick={handleGenerate}
               disabled={loading}
-              className="relative inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold text-white transition-all duration-300 bg-indigo-600 border border-indigo-500 rounded-full hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden w-full md:w-auto"
+              className="relative inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold text-white transition-all duration-300 bg-indigo-600 border border-indigo-500 rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden w-full md:w-auto"
             >
               {loading ? (
                 <>
