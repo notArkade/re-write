@@ -147,7 +147,7 @@ export function ContentGenerator() {
             <label className="text-sm font-medium text-neutral-400">
               Select Output Platforms
             </label>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 border border-white/5 p-2 rounded-xl bg-neutral-950/30">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 border border-white/5 p-2 rounded-xl bg-neutral-950/30">
               {platformOptions.map((option) => {
                 const isSelected = platforms[option.id];
                 return (
