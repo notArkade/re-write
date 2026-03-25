@@ -38,7 +38,7 @@ export default function MagnifyParagraph({ text }) {
       {/* NORMAL TEXT (only inside lens) */}
       {show && (
         <p
-          className="absolute inset-0 text-lg md:text-xl tracking-normal text-white space-mono leading-relaxed whitespace-normal break-words pointer-events-none"
+          className="absolute inset-0 text-lg md:text-xl mt-8 tracking-normal text-indigo-300 space-mono leading-relaxed whitespace-normal break-words pointer-events-none"
           style={{
             WebkitMaskImage: `radial-gradient(circle 120px at ${pos.x}px ${pos.y}px, white 100%, transparent 100%)`,
             maskImage: `radial-gradient(circle 120px at ${pos.x}px ${pos.y}px, white 100%, transparent 100%)`,

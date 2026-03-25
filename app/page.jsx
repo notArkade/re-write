@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
-import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import HoverText from "../components/HoverText";
 import MagnifyParagraph from "../components/MagnifyParagraph";
+import { MdPlayArrow } from "react-icons/md";
 
 export default async function LandingPage() {
   const { userId } = await auth();
@@ -61,13 +61,13 @@ export default async function LandingPage() {
 
         <Link
           href="/dashboard"
-          className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base space-mono uppercase tracking-[0.1em] font-semibold text-white transition-all duration-300 border border-indigo-500 rounded-lg hover:bg-indigo-700 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
+          className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base space-mono uppercase tracking-[0.1em] font-semibold bg-[#111111] text-white transition-all duration-300 border border-indigo-500 rounded-lg hover:bg-indigo-700 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
         >
           Start
           <span>
             <HoverText>Repurposing</HoverText>
           </span>
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <MdPlayArrow className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
         </Link>
       </main>
 
