@@ -59,16 +59,26 @@ export default async function LandingPage() {
   Shorts in seconds.`}
         />
 
-        <Link
-          href="/dashboard"
-          className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base space-mono uppercase tracking-[0.1em] font-semibold bg-[#111111] text-white transition-all duration-300 border border-indigo-500 rounded-lg hover:bg-indigo-700 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
-        >
-          Start
-          <span>
-            <HoverText>Repurposing</HoverText>
-          </span>
-          <MdPlayArrow className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-        </Link>
+        <div className="relative group inline-block">
+          {/* Background box */}
+          <div
+            className="absolute inset-0 rounded-lg bg-white translate-x-0 translate-y-0 
+                  group-hover:-translate-x-1 group-hover:translate-y-1 
+                  transition-all duration-300 z-0"
+          />
+
+          {/* Button */}
+          <Link
+            href="/dashboard"
+            className="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 text-base space-mono uppercase tracking-[0.1em] font-semibold bg-[#111111] text-white transition-all duration-300 border border-indigo-500 rounded-lg hover:bg-indigo-700 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)]"
+          >
+            Start
+            <span>
+              <HoverText>Repurposing</HoverText>
+            </span>
+            <MdPlayArrow className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+          </Link>
+        </div>
       </main>
 
       <footer className="py-8 text-center text-sm text-neutral-500 border-t border-indigo-500/50 backdrop-blur-md">
